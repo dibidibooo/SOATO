@@ -1,0 +1,6 @@
+~*
+debug.log*
+*.exe
+.idea/
+Tiles/
+img/

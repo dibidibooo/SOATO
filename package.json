@@ -1,0 +1,14 @@
+{
+    "name": "export-pdf",
+    "dependencies": {
+      "ol": "6.5.0"
+    },
+    "devDependencies": {
+      "parcel": "^2.0.0-beta.1"
+    },
+    "scripts": {
+      "start": "parcel init.html",
+      "build": "parcel build --public-url . init.html"
+    }
+  }
+  

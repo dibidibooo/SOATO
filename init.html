@@ -1,0 +1,1072 @@
+<!DOCTYPE HTML>
+<html class="loading semi-dark-layout" lang="en" data-layout="semi-dark-layout" data-textdirection="ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html">
+
+
+
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/bootstrap4-toggle.min.css" rel="stylesheet">
+
+    <script src="js/polyfill.js"></script>
+    <script src="js/ol.js"></script>
+
+    <script src="js/elm-pep.js"></script>
+
+    <!-- <script type="text/javascript" src="script/ol_3.7.0/build/ol.js"></script>
+    <script type="text/javascript" src="script/proj4js/dist/proj4.js"></script>
+    <script type="text/javascript" src="script/jquery/jquery.js"></script> -->
+    <script src="http://parall.ax/parallax/js/jspdf.js"></script>
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/file-uploaders/dropzone.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/forms/wizard/bs-stepper.min.css">
+    <!-- END: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/editors/quill/katex.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/editors/quill/monokai-sublime.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/editors/quill/quill.snow.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/forms/select/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/dragula.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/toastr.min.css">
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/bordered-layout.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/semi-dark-layout.css">
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-file-uploader.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/pages/app-todo.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-quill-editor.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/pickers/form-flat-pickr.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/extensions/ext-component-toastr.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-wizard.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <style>
+        .ol-scale-line-inner {
+            border: 2px solid black;
+            border-top: none;
+            color: black;
+            font-size: 15px;
+            text-align: center;
+            margin-top: 857px;
+            margin-left: 10px;
+            will-change: contents, width;
+            position: fixed;
+            bottom: 2%;
+            left: 16%;
+            z-index: 1;
+        }
+        
+        .ol-tooltip {
+            position: relative;
+            /* background: rgba(0, 0, 0, 0.5); */
+            border-radius: 0px;
+            color: rgb(0, 0, 0);
+            padding: 4px 8px;
+            opacity: 0.7;
+            white-space: nowrap;
+            font-size: 0px;
+        }
+        
+        .ol-tooltip-measure {
+            opacity: 1;
+            font-weight: bold;
+            border-radius: 4px;
+            color: rgb(0, 0, 0);
+            padding: 4px 8px;
+            opacity: 0.7;
+            white-space: nowrap;
+            font-size: 12px;
+        }
+        
+        .ol-tooltip-static {
+            background-color: #ffcc33;
+            color: black;
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 4px;
+            color: rgb(0, 0, 0);
+            padding: 4px 8px;
+            opacity: 0.7;
+            white-space: nowrap;
+            font-size: 12px;
+        }
+        
+        .ol-tooltip-measure:before,
+        .ol-tooltip-static:before {
+            border-top: 6px solid rgba(0, 0, 0, 0.5);
+            border-right: 6px solid transparent;
+            border-left: 6px solid transparent;
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            margin-left: -7px;
+            left: 50%;
+        }
+        
+        .ol-tooltip-static:before {
+            border-top-color: #ffcc33;
+        }
+    </style>
+
+
+
+    <title>SO&ATO 2</title>
+</head>
+
+
+
+<body class="bg vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="#"><span class="brand-logo">
+
+                            <h2 class="brand-text" style="color: white;">SO&ATO</h2>
+                    </a></li>
+            </ul>
+        </div>
+        <div class="shadow-bottom"></div>
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Информация</span><i data-feather="more-horizontal"></i>
+                </li>
+                <div class="add-task">
+                    <button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="#main_info_modal">
+                        Основные данные
+                    </button>
+                </div><br>
+                <div class="add-task" style="margin-top: -15px;">
+                    <button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="#plan_modal">
+                        Замысел
+                    </button>
+                </div><br>
+                <div class="add-task" style="margin-top: -15px;">
+                    <button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="#contact_modal">
+                        Таблица взаимодействий
+                    </button>
+                </div><br>
+                <div class="add-task" style="margin-top: -15px;">
+                    <button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="#new_stroy_modal">
+                        Строевая записка
+                    </button>
+                </div><br>
+                <div class="add-task" style="margin-top: -15px;">
+                    <button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="#meteo_modal">
+                        Метео условия
+                    </button>
+                </div>
+
+
+
+
+                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Редактирование</span><i data-feather="more-horizontal"></i>
+                </li>
+                <div class="tabs">
+                    <div class="tab-button-outer">
+                        <ul id="tab-button">
+                            <li><a class="btn btn-info" href="#tab01"><button onclick="set_draw_type_from_interface(this)" value="None" class="btn btn-info" >Рисование</button></a></li>
+                            <li><a class="btn btn-info" href="#tab02"><button onclick="set_draw_type_from_interface(this)" value="None" class="btn btn-info" >Иконки</button></a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-select-outer btn btn-primary">
+                        <select id="tab-select">
+                            <option value="#tab01" >Рисование</option>
+                            <option value="#tab02">Иконки</option>
+                        </select>
+                    </div><br>
+
+
+
+
+
+
+
+
+
+
+                    <div id="tab01" class="tab-contents">
+                        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-offset 1 col-xs-11 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                                        <div class="btn-toolbar" role="toolbar">
+                                            <div class="btn-group btn-group-justified" role="group">
+                                                <div class="btn-group" role="group">
+                                                    <button onclick="set_draw_type_from_interface(this)" value="None" class="btn btn-outline-info waves-effect" title="Выбрать">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-cursor-fill"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group" role="group">
+                                                    <button onclick="set_draw_type_from_interface(this)" value="Point" class="btn btn-outline-info waves-effect" title="Метка">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+                                                            <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group" role="group">
+                                                    <button onclick="set_draw_type_from_interface(this)" value="LineString" class="btn btn-outline-info waves-effect" title="Линии">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-slash" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M11.354 4.646a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708l6-6a.5.5 0 0 1 .708 0z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group" role="group">
+                                                    <button onclick="set_draw_type_from_interface(this)" value="Arrow" class="btn btn-outline-info waves-effect" title="Линия со стрелкой">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-arrow-up-right"
+                                                            viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
+                                                        </svg>
+                                                    </button>
+
+                                                </div>
+
+                                                <!-- <div class="btn-group" role="group">
+                                                    <button onclick="set_draw_type_from_interface(this)" value="KRUG" class="btn btn-outline-info waves-effect" title="KRUG">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-arrow-up-right"
+                                                            viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
+                                                        </svg>
+                                                    </button>
+
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-offset 1 col-xs-11 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                                        <div class="btn-toolbar" role="toolbar">
+                                            <div class="btn-group btn-group-justified" role="group" id="type">
+                                                <div class="btn-group" role="group">
+                                                    <button onclick="set_draw_type_from_interface(this)" value="length" class="btn btn-outline-info waves-effect" title="Линия с разметкой">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-bookmark-dash"
+                                                            viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M5.5 6.5A.5.5 0 0 1 6 6h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
+                                                            <path
+                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group" role="group">
+                                                    <button onclick="set_draw_type_from_interface(this)" value="Polygon" class="btn btn-outline-info waves-effect" title="Полигон">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-bounding-box-circles"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M2 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM0 2a2 2 0 0 1 3.937-.5h8.126A2 2 0 1 1 14.5 3.937v8.126a2 2 0 1 1-2.437 2.437H3.937A2 2 0 1 1 1.5 12.063V3.937A2 2 0 0 1 0 2zm2.5 1.937v8.126c.703.18 1.256.734 1.437 1.437h8.126a2.004 2.004 0 0 1 1.437-1.437V3.937A2.004 2.004 0 0 1 12.063 2.5H3.937A2.004 2.004 0 0 1 2.5 3.937zM14 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM2 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group" role="group">
+                                                    <button id="type" onclick="set_draw_type_from_interface(this)" value="area" class="btn btn-outline-info waves-effect" title="Полигон (кв. площадь)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-bounding-box"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M5 2V0H0v5h2v6H0v5h5v-2h6v2h5v-5h-2V5h2V0h-5v2H5zm6 1v2h2v6h-2v2H5v-2H3V5h2V3h6zm1-2h3v3h-3V1zm3 11v3h-3v-3h3zM4 15H1v-3h3v3zM1 4V1h3v3H1z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group" role="group">
+                                                    <button id="type" onclick="set_draw_type_from_interface(this)" value="Circle" class="btn btn-outline-info waves-effect" title="Окружность">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                          </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                        <div class="form-group ">
+                            <label for="type" style="color: white; margin-left: 20px;">Выбор пунктира</label>
+                            <select class="form-control" name="Line Dash" id="lineDash_id" onchange="setUsedStyle()">
+                                <option value="Scale" selected>Пунктир</option>
+                                <option value="Dash">Обычный пунктир</option>
+                                <option value="Dot">Точеченый пунктир</option>
+                            </select>
+                        </div>
+
+                        <hr>
+
+
+                        <label for="type" style="color: white; margin-left: 20px;">Выбор цвета границ </label>
+                        <input name="Color Picker" id="circle_color_id" type="color" value="#000" style="margin-left: 6px;" onchange="setUsedStyle()" />
+                        <label for="type" style="color: white; margin-left: 20px;">Выбор цвета заливки</label>
+                        <input name="Color Picker" id="fill_color_id" type="color" value="#00f" onchange="setUsedStyle()" />
+                        <label class="text-white" style="margin-left: 20px;">Прозрачность заливки</label>
+                        <input id="fill_opacity_id" style="margin-left: 20px;" min="0" max="1" step="0.1" type="range" value="0.2" onchange="setUsedStyle()" />
+
+                        <hr>
+
+                        <div class="form-group">
+                            <label for="basicInput" style="color: white; margin-left: 20px;">Текст для выноски</label>
+                            <input type="text" class="form-control" id="Text_style_id" placeholder="Введите.." />
+                        </div>
+
+
+
+
+                        <label class="text-white" style="margin-left: 20px;">Размер текста</label>
+                        <input id="text_size" min="5" max="100" step="1" type="range" value="20" onchange="setUsedStyle()" />
+                        <label for="type" style="color: white; margin-left: 20px;">Выбор цвета текста</label>
+                        <input name="Color Picker" id="text_color" type="color" value="#00f" onchange="setUsedStyle()" />
+                        <button class="btn btn-info" style="margin-left: 20px;" onclick="text()">Применить</button>
+                        <a id="export-png" class="btn btn-default"><i class="fa fa-download"></i> Download PNG</a>
+                        <a id="image-download" download="map.png"></a>
+
+                    </div>
+                    <div id="tab02" class="tab-contents">
+                        <div class="form-group">
+
+
+                            <label for="type" style="color: white;">Выбор иконок</label>
+                            <!-- /icon list -->
+                            <div class="card" id="icon_app">
+                                <label class="btn btn-info">
+                                    Добавить иконку
+                                    <input type="file" onchange="download_icons(this)" style="display: none; background-color: #ffcc33;"
+                                        accept="image/png,image/jpeg">
+                                </label>
+
+                                <ul>
+                                    <li v-for="(icon, index) in object_icons">
+                                        <div class="input-inline">
+                                            <!-- {{icon}} -->
+                                            <button onclick="set_icon_image(this)" class="btn" style="margin-left: -20px; margin-right:-20px;">
+                                                <img :id="icon.id + '_img'" :src="icon.src"
+                                                    style="width: 32px; height: 32px;" alt=""
+                                                    class="map_object sign save_image">
+                                            </button>
+                                            <input type="text" placeholder="Описание" class="form-control-sm" v-model="icon.description">
+                                            <input type="button" value="X" @click="deleteIconByIdAndType(index)" class="btn btn-danger btn-sm">
+                                        </div>
+                                    </li>
+                                    <label style="color: black;">Размер иконки</label>
+                                    <input type="range" min="0" max="1" step="0.1" value="1" id="scale_id_for_icon" oninput="change_icon_text()">
+                                    <label style="color: black;">Вращение иконки</label>
+                                    <input type="range" min="-3.14" max="3.14" step="0.01" value="0" id="rotation_icons_id" oninput="change_icon_text()">
+
+
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class=" app-content content ">
+        <div class=" content-wrapper">
+            <div class="content-body">
+
+                <div class="tab-content" id="myTabContent">
+                    <!-- Информация -->
+                    <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+
+                        <!-- Основные данные -->
+                        <div class="modal fade" id="main_info_modal" tabindex="-1" role="dialog" aria-labelledby="main_info_modalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="main_info_modalLabel">Основные данные</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="main_info_app">
+                                            <div class="form-group">
+                                                <label class="form-label">Наименование:</label>
+                                                <input type="text" placeholder="Наименование" class="form-control" v-model="main_info.name">
+                                                <!-- <div class="dropdown-divider"></div> -->
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Основные показатели:</label>
+                                                <input type="text" placeholder="Основные показатели" class="form-control" v-model="main_info.parametrs">
+                                                <!-- <div class="dropdown-divider"></div> -->
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Подпись:</label>
+                                                <input type="text" placeholder="Подпись" class="form-control" v-model="main_info.signature">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Время с/до: </label>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input name="time_from" type="time" class="form-control" v-model="main_info.time_from">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input name="time_to" type="time" class="form-control" v-model="main_info.time_to">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Закрыть</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Основные данные -->
+
+
+                        <!-- Замысел -->
+                        <div class="modal fade" id="plan_modal" tabindex="-1" role="dialog" aria-labelledby="plan_modalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="plan_modalLabel">Замысел</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="zamisel_app">
+                                            <textarea class="form-control" cols="30" rows="18" placeholder="Введите замысел" v-model="zamisel_info"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Закрыть</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Замысел -->
+
+                        <!-- Таблица взаимодействий -->
+                        <div class="modal fade" id="contact_modal" tabindex="-1" role="dialog" aria-labelledby="contact_modalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="contact_modalLabel">Таблица взаимодействий</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="contact_table_app">
+
+                                            <table id="contact_table" class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">№</th>
+                                                        <th scope="col">Наименование организации</th>
+                                                        <th scope="col">Позывной</th>
+                                                        <th scope="col">Дополнительная информация</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="contact_table">
+                                                    <tr v-for="(contact, i) in contact_table" :key='i'>
+                                                        <th scope="row">{{i + 1}}</th>
+                                                        <td><input type="text" class="form-control" placeholder="Наименование организации" v-model="contact.org_name"></td>
+                                                        <td> <input type="text" class="form-control" placeholder="Позывной" value="" v-model="contact.sign">
+                                                        </td>
+                                                        <td><textarea class="form-control" cols="35" rows="2" value="" placeholder="Дополнительная информация" v-model="contact.info"></textarea></td>
+                                                        <td class="px-0"> <button @click="removeContactById(i)" class="btn btn-outline-danger waves-effect  px-3">X</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <button class="btn btn-outline-primary waves-effect" @click="addNewContact()">
+                                                Добавить
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Закрыть</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Таблица взаимодействий -->
+
+
+                        <!-- Строевая записка -->
+                        <div class="modal fade" id="new_stroy_modal" tabindex="-1" role="dialog" aria-labelledby="new_stroy_modalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="new_stroy_modalLabel">Строевая записка</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="accordion mb-3" id="new_stroy">
+
+                                            <div id="stroy_table_app">
+                                                <!-- Подразделение -->
+                                                <div class="card mb-1" v-for="(podrazd, i) in stroy_table">
+                                                    <div class="card-header ">
+                                                        <div class="input-group">
+                                                            <div class="mr-2">{{i+1}}</div>
+                                                            <input v-model="podrazd.name" type="text" class="form-control" placeholder="Подразделение" value="" aria-label="Подразделение" v-bind:aria-describedby="'new_stroy_addon_'+i">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-outline-success waves-effect btn-sm " v-bind:id="'new_stroy_addon_'+i" type="button" data-toggle="collapse" v-bind:data-target="'#new_stroy_collaps_1'+i" aria-expanded="false">Подробнее</button>
+                                                                <button class="btn btn-outline-danger waves-effect btn-sm collapsed m-0 ml-3" @click="deletPodrazdById(i)">X</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div v-bind:id="'new_stroy_collaps_1'+i" class="collapse " data-parent="#new_stroy">
+                                                        <div class="card-body ml-5">
+                                                            <!-- Строевая записка -->
+                                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                                                <li class="nav-item" role="presentation">
+                                                                    <a class="nav-link active" :id="'new_stroy_vehicle_tab_'+i" data-toggle="pill" :href="'#new_stroy_vehicle_tab_pills_'+i" role="tab" :aria-controls="'new_stroy_vehicle_tab_pills_'+i" aria-selected="true">Транспорт:
+                                                                        {{podrazd.stroy_info.transport_count}}</a>
+
+                                                                </li>
+                                                                <li class="nav-item" role="presentation">
+                                                                    <a class="nav-link" :id="'new_stroy_sostav_tab_'+i" data-toggle="pill" :href="'#new_stroy_sostav_tab_pills_'+i" role="tab" :aria-controls="'new_stroy_sostav_tab_pills_'+i" aria-selected="false">Личный состав:
+                                                                        {{podrazd.stroy_info.sostav_count}}</a>
+                                                                </li>
+                                                                <li class="nav-item" role="presentation">
+                                                                    <a class="nav-link" :id="'new_stroy_veapon_tab_'+i" data-toggle="pill" :href="'#new_stroy_veapon_tab_pills_'+i" role="tab" :aria-controls="'new_stroy_veapon_tab_pills_'+i" aria-selected="false">Вооружение:
+                                                                        {{podrazd.stroy_info.veapon_count}}</a>
+                                                                </li>
+                                                                <li class="nav-item" role="presentation">
+                                                                    <a class="nav-link" :id="'new_stroy_bullets_tab_'+i" data-toggle="pill" :href="'#new_stroy_bullets_tab_pills_'+i" role="tab" :aria-controls="'new_stroy_bullets_tab_pills_'+i" aria-selected="false">Боеприпасы:
+                                                                        {{podrazd.stroy_info.bullets_count}}</a>
+                                                                </li>
+                                                            </ul>
+                                                            <div class="tab-content" :id="'pills-tabContent_'+i">
+                                                                <!-- Транспорт -->
+                                                                <div class="tab-pane fade show active" :id="'new_stroy_vehicle_tab_pills_'+i" role="tabpanel" :aria-labelledby="'new_stroy_vehicle_tab_'+i">
+
+                                                                    <div class="form-inline" v-for="(item, index) in podrazd.stroy_info.transport">
+                                                                        <div class="mr-2">{{index+1}}</div>
+                                                                        <input type="text" placeholder="Транспорт" value="" class="form-control" v-model="item.name">
+                                                                        <input type="number" min="0" class="form-control" @change="findSunQuantity" v-model="item.quantity">
+                                                                        <button @click='deleteItemByPodrazdIdTypeAndId(i,"transport", index)' class="btn btn-danger btn-sm">X</button>
+                                                                    </div>
+
+                                                                    <button class="btn btn-outline-primary waves-effect" @click="addItemByPodrzdIdAndType(i,'transport')">Добавить</button>
+
+                                                                </div>
+                                                                <!-- /Транспорт -->
+
+                                                                <!-- Личный состав -->
+                                                                <div class="tab-pane fade" :id="'new_stroy_sostav_tab_pills_'+i" role="tabpanel" :aria-labelledby="'new_stroy_sostav_tab_'+i">
+                                                                    <div class="form-inline" v-for="(item, index) in podrazd.stroy_info.sostav">
+                                                                        <div class="mr-2">{{index+1}}</div>
+                                                                        <input type="text" placeholder="Личный состав" value="" class="form-control" v-model="item.name">
+                                                                        <input type="number" min="0" class="form-control" @change="findSunQuantity" v-model="item.quantity">
+                                                                        <button @click='deleteItemByPodrazdIdTypeAndId(i,"sostav", index)' class="btn btn-danger btn-sm">X</button>
+                                                                    </div>
+                                                                    <button class="btn btn-outline-primary waves-effect" @click="addItemByPodrzdIdAndType(i,'sostav')">Добавить</button>
+
+                                                                </div>
+                                                                <!-- /Личный состав -->
+
+                                                                <!-- Вооружение -->
+                                                                <div class="tab-pane fade" :id="'new_stroy_veapon_tab_pills_'+i" role="tabpanel" :aria-labelledby="'new_stroy_veapon_tab_'+i">
+                                                                    <div class="form-inline" v-for="(item, index) in podrazd.stroy_info.veapon">
+                                                                        <div class="mr-2">{{index+1}}</div>
+                                                                        <input type="text" placeholder="Вооружение" value="" class="form-control" v-model="item.name">
+                                                                        <input type="number" min="0" class="form-control " @change="findSunQuantity" v-model="item.quantity">
+                                                                        <button @click='deleteItemByPodrazdIdTypeAndId(i,"veapon", index)' class="btn btn-danger btn-sm">X</button>
+                                                                    </div>
+                                                                    <button class="btn btn-outline-primary waves-effect" @click="addItemByPodrzdIdAndType(i,'veapon')">Добавить</button>
+                                                                </div>
+                                                                <!-- /Вооружение -->
+
+                                                                <!-- Боеприпасы -->
+                                                                <div class="tab-pane fade" :id="'new_stroy_bullets_tab_pills_'+i" role="tabpanel" :aria-labelledby="'new_stroy_bullets_tab_'+i">
+                                                                    <div class="form-inline" v-for="(item, index) in podrazd.stroy_info.bullets">
+                                                                        <div class="mr-2">{{index+1}}</div>
+                                                                        <input type="text" placeholder="Боеприпасы" value="" class="form-control" v-model="item.name">
+                                                                        <input type="number" min="0" class="form-control " @change="findSunQuantity" v-model="item.quantity">
+                                                                        <button @click='deleteItemByPodrazdIdTypeAndId(i,"bullets", index)' class="btn btn-danger btn-sm">X</button>
+                                                                    </div>
+                                                                    <button class="btn btn-outline-primary waves-effect" @click="addItemByPodrzdIdAndType(i,'bullets')">Добавить</button>
+                                                                </div>
+                                                                <!-- /Боеприпасы -->
+
+                                                            </div>
+                                                            <!-- Строевая записка -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /Подразделение -->
+
+                                                <button class="btn btn-outline-primary waves-effect" @click="addPodrazd">Добавить подразделение</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Закрыть</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Строевая записка -->
+                        <!-- Метео условия -->
+                        <div class="modal fade" id="meteo_modal" tabindex="-1" role="dialog" aria-labelledby="meteo_modalLabel" aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="meteo_modalLabel">Метео условия</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="meteo_app">
+                                            <div class="form-group row">
+                                                <label class="col-7 col-form-label">Температура(°C)</label>
+                                                <div class="col-5">
+                                                    <input v-model="meteo_info.temperature" type="number" value="0" class="form-control">
+                                                </div>
+                                                <div class="dropdown-divider"></div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-7 col-form-label">Влажность(%)</label>
+                                                <div class="col-5">
+                                                    <input v-model="meteo_info.moisture" type="number" min="0" value="0" class="form-control">
+                                                </div>
+                                                <div class="dropdown-divider"></div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-7 col-form-label">Давление воздуха</label>
+                                                <div class="col-5">
+                                                    <input v-model="meteo_info.pleasure" type="number" min="0" value="0" class="form-control">
+                                                </div>
+                                                <div class="dropdown-divider"></div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-7 col-form-label">Скорость ветра(м/с)</label>
+                                                <div class="col-5">
+                                                    <input v-model="meteo_info.wind_speed" type="number" min="0" value="0" class="form-control">
+                                                </div>
+                                                <div class="dropdown-divider"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Закрыть</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Метео условия -->
+                    </div>
+                    <!-- /Информация -->
+                </div>
+
+
+
+
+
+                <section id="dropzone-examples">
+                    <div id="map" style="height: 98vh; margin-top: -6%;">
+                    </div>
+
+
+                    <div id="save_to_local" style="margin-bottom: 10%;">
+
+                        <!-- <div class="form-inline mr-2">
+                            <label> Сохранение  <input type="text" :readonly="is_readonly" class="form-control form-control-sm ml-1" v-model='now_save'></label>
+                            <button class="btn btn-success btn-sm mr-2" @click="saveToLocalStorage">Сохранить</button>
+
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#load_modal" @click="getAllSaves">Загрузить</button>
+
+                        </div> -->
+                        <!-- Modal -->
+                        <!-- <div class="modal fade" id="load_modal" tabindex="-1" role="dialog" aria-labelledby="load_modal_label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="load_modal_label">Список сохранений</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+                                    </div> -->
+                        <!-- <div class="modal-body">
+                                        <p class="text-muted">Выберите сохранение которое хотите загрузить</p>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Название</th>
+                                                    <th scope="col">Дата </th>
+                                                    <th scope="col">Загрузить</th>
+                                                    <th scope="col">Удалить</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(save_name, i) in savings_names">
+                                                    <th scope="row">{{i+1}}</th>
+                                                    <td>{{save_name.name}}</td>
+                                                    <td>{{save_name.date}}</td>
+                                                    <td>
+                                                         <button class="btn btn-success" @click='getFromLocalStorage(save_name)' data-dismiss="modal"></button> -->
+                        <!-- <img src="img/icons/download_icon (2).png" alt="" style="width: 34px;" @click='getFromLocalStorage(i)' data-dismiss="modal" class=" p-1"></td>
+                                                    <td>
+                                                        <h3><span @click='removeSavingInLocalStorage(i)'>&times;</span></h1>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+                                    </div> -->
+                    </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <div class="material-button-anim" style="margin-top: -20%; margin-left: 86%;">
+        <ul class="list-inline" id="options">
+            <li class="option">
+                <button onclick="generateImageFromMap()" class="material-button option1" type="button" title="Создать PDF">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                    class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z" />
+                                </svg> </button>
+            </li>
+            <li class="option">
+                <button class="material-button option2" type="button" data-toggle="modal" data-target="#primary" title="Инструкция">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                    class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                                </svg> </button>
+            </li>
+            <li class="option">
+                <button onclick="location.reload()" class="material-button option3" type="button" title="Очистить всю страницу">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                    class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                </svg> </button>
+            </li>
+        </ul>
+        <button class="material-button material-button-toggle" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
+                            class="bi bi-gear-wide-connected" viewBox="0 0 16 16">
+                            <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434l.071-.286zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5zm0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78h4.723zM5.048 3.967c-.03.021-.058.043-.087.065l.087-.065zm-.431.355A4.984 4.984 0 0 0 3.002 8c0 1.455.622 2.7
+                                     65 1.615 3.678L7.375 8 4.617 4.322zm.344 7.646.087.065-.087-.065z" />
+                        </svg> </button>
+    </div>
+    <div class="modal fade text-left modal-primary" id="primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel160">Инструкция</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                </div>
+                <div class="modal-body">
+                    <span style="font-weight:900">Инструкция по СО и АТО (Спец операции и антитеррористические операции )</span> <br>
+                    <br><span style="font-weight:600"> В программе с левой стороны имеется колонка, где расположена все необходимое для взаимодействия с картой и заполнением данных об операции.</span>
+                    <br><br> <span style="font-weight:800">Левая колонка состоит из 2 пунктов:</span>
+                    <br><br> <span style="font-weight:600"> 1) Информация: В данной части необходимо вносить данные об операции.</span>
+                    <br><br> <span style="font-weight:600">2) Редактирование: В данной части есть все необходимые инструменты для взаимодействия с картой. Так же имеются дополнительные кнопки для взаимодействия , с программой которые расположены снизу.</span>
+                    <br><br><span style="font-weight:800">Первый пункт: Основные данные состоит из 4 пунктов:</span>
+                    <br><br> <strong> Наименование:</strong> необходимо внести название операции, которая в дальнейшем будет отображаться в файле PDF.
+                    <br><br> <strong>Основные показатели:</strong> такой же показатель как "наименование" так же требуется заполнить данную часть для отображения в PDF файле.
+                    <br><br> <strong>Подпись:</strong> Необходимо указать Фамилию Имя Отчество.
+                    <br><br> <strong>Время:</strong> Указывается время начала и конца операции. Замысел: Данный раздел состоит только из одного окна, где есть возможность указать данные о целях операции.
+                    <br><br> <strong>Таблица взаимодействий:</strong> В этом пункте имеется 3 поля для заполнения данных.
+                    <br><br> <strong>Наименование организации:</strong> Название организации которая будет участвовать в проведений операции.
+                    <br><br><strong>Позывной:</strong> Название команды во время операции.
+                    <br><br> <strong>Дополнительная информация:</strong> необходимо заполнять, если есть дополнительная информация об организации, которая будет участвовать в проведении операции. В данном пункте может быть неограниченное количество организации
+                    для выполнения операции, снизу полей имеется кнопка добавить, для добавление новой организации, которая будет участвовать в операции, так же у каждой организации с левой стороны, после дополнительной информации имеется кнопка Х для
+                    удаления организации из списка участвующих.
+                    <br><br> <strong>Строевая записка:</strong> Записка хранит в себе данные о подразделениях, таких как транспорт, личный состав, вооружение, боеприпасы. указываются данные: название и количество.<br> В каждом разделе имеется кнопка прибавления
+                    дополнительных данных, и удаление их. Так же добавлена кнопка о добавление нового подразделения. В каждом подразделении имеются свои пункты.
+                    <br><br> <strong>Метео условия:</strong> Данное поле предназначено для указывания погодных условии вашего региона, таких как градусы, влажность, давление воздуха, скорость ветра.
+                    <br><br> <strong>*Необходимо заполнить все эти данные для того чтобы они отобразились в PDF файле.*</strong>
+                    <br><br> <strong>Второй пункт: Редактирование дает возможность работать с картой. Для начала о карте, данная карта имеет точные показатели по РК, о дорогах, городах и границах. <br> Если вам необходимо выбрать один из городов РК
+                                вам необходимо с помощью мыши передвигать карту до вашего города и прокрутить колесо мыши вперед для увеличения или назад для уменьшения обзора карты, так же если вам необходимо перевернуть карту необходимо зажать кнопки
+                                alt+shift и зажать левую кнопку мыши на карте и начать ею двигать, и вы увидите что происходит в этот момент с картой.</strong>
+                    <br><br> <span style="font-weight:900">На карте в верхнем углу карты имеются кнопки для взаимодействия с картой, а именно увеличение или уменьшение карты, так же кнопка с изображением стрелки для вращения карты в исходное положение при повороте карты.
+                                С левой стороны в нижней части карты имеется метка с указанием километров, оно указывается, на какой высоте вы наблюдаете карту, на сколько километров или метров вы к ней приблизились.
+                                
+                                <br><br> Имеется две кнопки в разделе редактирование: 1)Рисование 2) Иконки, каждая из них отвечает за свои аспект работы.<br></span>
+                    <br> <span style="font-weight:900">1)Рисование</span><br><br> <strong>Первый пункт стоит указатель мыши:</strong> Оно не делает никаких рисунков на карте, оно необходимо для выделения каких либо объектов на карте или же перейти в обычное
+                    взаимодействие с картой.
+                    <br><br><strong> Вторым пунктом указана точка:</strong> Данная точка служит некой меткой для отображения на карте, как с ней взаимодействовать решать вам. Метка ставиться одним нажатьем мыши, если вам необходимо указать метку на какой-нибудь
+                    дороге или площади, необходимо увеличить масштаб карты так как при отдаленном масштабе карты вы можете неправильно указать местоположение.
+                    <br><br> <strong>Третьим пунктом по счету это линия:</strong> Одна из функции рисования, дает возможность проводить по всей карте или в определенных частях карты линию, которая будет растягиваться, для управления ею необходимо нажать
+                    один раз на левую кнопку мыши и начать проводить по карте до конечной точки которая вам необходима, для поворота линии достаточно во время проведения линии один раз кликнуть на левую кнопку мыши это даст вам повернуть линии в другую
+                    сторону, так же линия имеет свойство свободной кисти, необходимо зажать кнопку shift + удерживая левую кнопку мыши начать проводить линию по карте как кистью.
+                    <br><br><strong> Четвертый пункт это линия со стрелкой:</strong> То есть имеет такие же свойства как линия, но имеет кончик стрелы на конце, что позволяет более детально указать направление.
+                    <br><br> <strong>Пятый пункт это рулетка:</strong> Для измерения расстояния между городами или любой другой частью карты, для наглядного отображения информации о расстоянии в конце рисования появится желтое поле, где будет указаны
+                    цифры в километрах или метрах. Так же имеет свойства свободной кисти.
+                    <br><br> <strong>Шестой пункт указан квадратом это функция полигона:</strong> Полигон имеет свойство покрывать какой-нибудь район области который вы выделите будет окрашен или затемнен на ваш выбор, так же полигон будет указан так
+                    как вы его начертите на карте и он должен быть обязательно закончен для выделения участка.
+                    <br><br> <strong>Седьмой пункт площадь:</strong> Площадь имеет все функции полигона, но так же может указывать площадь в квадратных километрах или метрах, для более точной операции, данные о площади отобразиться в центре полигона с
+                    желтым знаком.
+                    <br><br> <strong>Восьмой пункт Круг:</strong> Круг дает возможность выделить идеальную окружность в случае необходимости, чего не может дать полигон. Почти каждый кроме двух функции завершается двойным нажатием, исключение имеют Круг
+                    и Метка.
+                    <br><br> <strong>Далее следует пункт *выбор пунктира*</strong> Оно имеет три положения: без пунктира, с обычным пунктиром и мелким пунктиром. <br> Функция пунктира действует почти на все функции, которые описаны выше, кроме метки.
+                    Если вам необходимо указать данные рисунки с пунктиром, необходимо выбрать один их трех пунктов далее выбрать функцию рисования и начать отображать ее на карте.
+                    <br> Если выбрали один из видов пунктира и переходите на другие функции рисования то данный пункт останется, поэтому необходимо перед началом другой фигуры убедиться в том, что у вас стоит нужная настройка.
+                    <br><br> <strong>Следующий пункт в редактировании является *Выбор цвета границ*</strong> Оно предназначено для того чтобы при рисование определенных фигур вы могли выбрать цвет для каждой из них, чтобы было более понятно какой из пунктов
+                    за что отвечает.
+                    <br><br> <strong>Такой же пункт является *Выбор цвета заливки:</strong> Она необходимо для таких пунктов как полигон, площадь, или же круг, чтобы перекрасить внутреннею часть фигур, добавление окраса определённых зон, так как только
+                    по краям не совсем понятно где они сливаются, так же можно указать опасность зоны, выделив определённым цветом и зону безопасности.
+                    <br><br> <strong>Ниже имеется ползунок обозначающий *Прозрачность заливки*</strong> то есть при прокручивания ползунка вы сможете указать насколько должен быть закрашен тот или иной объект, полностью либо частично, ползунок находиться
+                    на состоянии минимального закрашивания.
+                    <br><br><strong> Текст для выноски:</strong> Тоже является одной из частей редактирования, с ее помощью вы можете выставить линию или фигуру, на который будет отображен текст, чтобы давать более конкретную информацию, как использовать
+                    данную функцию? <br> Имеется специальное окно для написания текста, после того как впишите ваше предложение или слово, выбираете фигуру на который вы хотите отобразить текст, далее данный текст будет, отображается на всех фигурах до
+                    того момента пока вы не уберет слово и не выберете заново функцию для рисования.
+                    <br> У данного текста также есть свой ползунок, который изменяет размер текста, что дает возможность вам контролировать сам текст, выставлять тот размер, который вам необходим, по умолчанию текст находиться в минимальном состоянии.
+                    Кроме ползунка текст имеет такие же функции как изменение цвета текста, что дает возможность окрашивать текст разными цветами.
+                    <br><br> <strong>Перейдем к финальной части рисования, это кнопка применить, зачем нужная это функция? <br> Она нужна для изменения фигуры, которая была нарисовано уже на карте.</strong>
+                    <br><br> Как использовать изменения, необходимо выбрать пункт указатель "выбрать", самый первый из восьми квадратов, после того как вы его выбрали, вам необходимо нажать на фигуру которая находиться на карте, после выбора нужной фигуры
+                    оно загорится синим цветом, после этого на контрольной панели рисования, можете поставить пунктиры, поменять цвет границ или заливки, указать текст который вы хотите, и в конце нажимаете кнопку применить, все изменения перейдут на
+                    эту фигуру, так же если вам надо уменьшить или поменять направление фигуры, то после выбора вы можете схватить за любой край фигуры и начать перемещать его, так же можно перемещать всю фигуры по карте, для этого внутри фигуру есть
+                    синяя метка которая отображается после того как мышка оказывается в ее диапазоне, необходимо зажать и начать перемещать фигуру.
+                    <br><br><span style="font-weight:900">2) Иконки:</span> <br><br> Иконки предназначены для того чтобы вносить свои специфические маркеры на карту, то есть вы может скачать или же создадите сами в каком-нибудь редакторе, и загрузить
+                    ее в программу , после чего оно у вас отобразиться в список иконок и вы сможете вставить ее на карту, как только иконка отобразиться в списке вам надо будет нажать на нее один раз и дальше указать ее на карте, где вы укажите там и
+                    будет отображаться иконки, иконок вы можете добавлять большое множество, так же иконки должны иметь определенный размер, чтобы большие картины не перекрывали всю карту за раз, рядом с иконкой есть текстовое поле, в котором вы можете
+                    указать название или обозначение иконок, что в последствии будет отображаться в pdf файле, все иконки можно регулировать с помощью ползунков, имеются два ползунка каждый из них отвечающий за определенный аспект, один из ползунков может
+                    изменять размер иконки второй за ротация то есть поворот иконки, иконки поворачиваются в зависимости от настроек, два ползунка отвечают за все иконки.
+                    <br><br> <strong>Допольнительные кнопки на карте.</strong>
+                    <br><br> <strong>Кнопка сохранить и загрузить:</strong> Данные кнопки дают возможность сохранить внутри программы ваши тактические данные, если вам необходимо провести какие-либо обучения разным группам по одной и той же тактике, то
+                    вы можете указать название в текстовом поле, заполнить все данные и нажать на кнопку сохранить.
+                    <br> В случае если вы захотели посмотреть или перезаписать какой-нибудь из планов, необходимо будет нажать на кнопку загрузки которое в дальнейшем вызовет окно со списком сохраненных вами планов, и рядом с ними будут дополнительные
+                    кнопки которые дают возможность загрузить или же удалить один из выбранных планов.
+                    <br><br> <strong> В правом углу карты имеется, фиолетовая интерактивная кнопка при нажатии даст вам дополнительные возможности.</strong>
+                    <br><br><strong> Первое это кнопка с иконкой файла, при ее нажатии программа выгрузит вам файл с вашими данными и обозначениями.
+                                <br><br> Вторая кнопка с вопросительным знаком направит вас в это окно с инструкцией пользования.
+                                <br><br> Третья кнопка в виде восклицательного знака очищает всю программу не только карту но и записанные вами данные. *Осторожно очищает абсолютно все данные с программы кроме сохранённых*
+                                <br><br> По середины карты и в правом углу карты есть кнопки выделенные красным цветом, кнопка с рисунком "обратной стрелки" дает возможность сделать шаг назад во время рисования, а так же вы можете нажать комбинация кнопок
+                                cntrl+z что так же дает шаг назад, вторая кнопка "удалить объект" необходимо выбрать в пункте редактирования пункт указателя и выбрать объект на карте что дает возможность полного удаления выбранного объекта так же это
+                                функция работает с кнопкой delete на клавиатуре.</strong>
+                    <br><br> <span style="font-weight:900">MADE IN ALMATY ENERGO SERVICE</span>
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    </div>
+    </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="buy-now" style="margin-right: 44.8%; margin-bottom: -1%; ">
+        <button type="button" class="btn btn-danger" data-toggle="tooltip" id="undo">
+            <i data-feather='rotate-ccw'></i>
+        </button>
+    </div>
+
+
+    <div class="buy-now " style="margin-bottom: -1%; margin-right: 36.7%;"><a onclick="deleteSelected() " target="_blank " class="btn btn-danger waves-effect waves-float waves-light ">Удалить объект</a></div>
+
+    <div class="sidenav-overlay "></div>
+    <div class="drag-target "></div>
+
+
+
+
+
+
+
+    <script src="app-assets/vendors/js/vendors.min.js "></script>
+    <script src="app-assets/vendors/js/extensions/dropzone.min.js "></script>
+    <script src="app-assets/vendors/js/editors/quill/katex.min.js "></script>
+    <script src="app-assets/vendors/js/editors/quill/highlight.min.js "></script>
+    <script src="app-assets/vendors/js/editors/quill/quill.min.js "></script>
+    <script src="app-assets/vendors/js/forms/select/select2.full.min.js "></script>
+    <script src="app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js "></script>
+    <script src="app-assets/vendors/js/extensions/dragula.min.js "></script>
+    <script src="app-assets/vendors/js/forms/validation/jquery.validate.min.js "></script>
+    <script src="app-assets/vendors/js/extensions/toastr.min.js "></script>
+    <script src="app-assets/js/core/app-menu.js "></script>
+    <script src="app-assets/js/core/app.js "></script>
+    <script src="app-assets/js/scripts/pages/app-todo.js "></script>
+    <script src="app-assets/js/scripts/forms/form-file-uploader.js "></script>
+    <script>
+        $(window).on('load', function() {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.material-button-toggle').on("click", function() {
+                $(this).toggleClass('open');
+                $('.option').toggleClass('scale-on');
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+            var $tabButtonItem = $('#tab-button li'),
+                $tabSelect = $('#tab-select'),
+                $tabContents = $('.tab-contents'),
+                activeClass = 'is-active';
+
+            $tabButtonItem.first().addClass(activeClass);
+            $tabContents.not(':first').hide();
+
+            $tabButtonItem.find('a').on('click', function(e) {
+                var target = $(this).attr('href');
+
+                $tabButtonItem.removeClass(activeClass);
+                $(this).parent().addClass(activeClass);
+                $tabSelect.val(target);
+                $tabContents.hide();
+                $(target).show();
+                e.preventDefault();
+            });
+
+            $tabSelect.on('change', function() {
+                var target = $(this).val(),
+                    targetSelectNum = $(this).prop('selectedIndex');
+
+                $tabButtonItem.removeClass(activeClass);
+                $tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+                $tabContents.hide();
+                $(target).show();
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Bootstrap -->
+    <script type="text/javascript " src="js/jquery.min.js "></script>
+    <script type="text/javascript " src="js/popper.min.js "></script>
+    <script type="text/javascript " src="js/bootstrap.min.js "></script>
+    <script type="text/javascript " src="js/mdb.min.js "></script>
+    <script src="js/bootstrap4-toggle.min.js "></script>
+    <!-- PDF -->
+    <!-- <script type="text/javascript " src="js/html2canvas.js "></script> -->
+    <script type="text/javascript " src="js/html2canvas.min.js "></script>
+    <!-- jsPDF -->
+    <!-- <script type="text/javascript " src="js/jspdf.min.js "></script> -->
+    <!-- PDF maker -->
+    <script type="text/javascript " src='js/pdfmake.min.js'></script>
+    <script type="text/javascript " src='js/vfs_fonts.js'></script>
+    <!-- Lazy load -->
+    <script src="js/jquery.lazyload.js "></script>
+    <!-- Vue js -->
+    <script type="text/javascript " src='js/vue.js'></script>
+    <!-- <script type="text/javascript " src='js/vue.min.js'></script> -->
+    <!-- app -->
+
+    <!-- <script src="js/ofmaps.js "> </script> -->
+    <!-- <script src="script.js "></script> -->
+
+    <script src="js/offline_maps.js ">
+    </script>
+    <script type="text/javascript " src="js/script.js"></script>
+
+
+</body>
+
+</html>
