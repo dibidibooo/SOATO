@@ -1,2 +1,1 @@
 # SOATO
-![](Untitled.gif)
